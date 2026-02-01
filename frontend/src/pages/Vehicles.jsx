@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import VehicleCard from '../components/VehicleCard/VehicleCard'
+import VehicleCard from '../Components/VehicleCard/VehicleCard'
 
 const Vehicles = () => {
   const location = useLocation();

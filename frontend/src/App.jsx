@@ -1,15 +1,15 @@
 import React from 'react'
 import Home from './pages/Home'
 import { Routes, Route } from 'react-router-dom';
-import Service from './components/Service/Service';
-import Navbar from './components/Navbar/Navbar';
-import BookingForm from './components/BookingForm/BookingForm';
-import AdminLogin from './components/AdminLogin/AdminLogin';
+import Service from './Components/Service/Service';
+import Navbar from './Components/Navbar/Navbar';
+import BookingForm from './Components/BookingForm/BookingForm';
+import AdminLogin from './Components/AdminLogin/AdminLogin';
 
 import Vehicles from './pages/Vehicles';
 import Success from './pages/Success';
 import AdminDashboard from './pages/AdminDashboard';
-import About from './components/About/About';
+import About from './Components/About/About';
 
 const App = () => {
   return (

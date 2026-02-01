@@ -1,8 +1,8 @@
 import React from "react";
-import MainPage from "../components/MainPage/MainPage";
-import Service from "../components/Service/Service";
-import Navbar from "../components/Navbar/Navbar";
-import About from "../components/About/About";
+import MainPage from "../Components/MainPage/MainPage";
+import Service from "../Components/Service/Service";
+import Navbar from "../Components/Navbar/Navbar";
+import About from "../Components/About/About";
 
 const Home = () => {
   return (
