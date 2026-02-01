@@ -2,13 +2,35 @@ const { Client } = require('pg');
 require('dotenv').config();
 
 const ensureDatabaseExists = async () => {
-    const dbName = process.env.DB_NAME || 'taxi_db';
+    let dbName = process.env.DB_NAME || 'taxi_db';
+    let dbUser = process.env.DB_USER;
+    let dbPassword = process.env.DB_PASSWORD;
+    let dbHost = process.env.DB_HOST;
+    let dbPort = process.env.DB_PORT;
+
+    if (process.env.DB_URL) {
+        try {
+            const url = new URL(process.env.DB_URL);
+            dbUser = url.username || dbUser;
+            dbPassword = url.password || dbPassword;
+            dbHost = url.hostname || dbHost;
+            dbPort = url.port || dbPort;
+            dbName = url.pathname.slice(1) || dbName;
+        } catch (e) {
+            console.error('Error parsing DB_URL:', e.message);
+        }
+    }
+
     const config = {
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,
-        database: 'postgres', // Connect to default database
+        user: dbUser,
+        password: dbPassword,
+        host: dbHost,
+        port: dbPort,
+        database: 'postgres',
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
     };
 
     const client = new Client(config);
@@ -37,6 +59,10 @@ const ensureDatabaseExists = async () => {
     const dbClient = new Client({
         ...config,
         database: dbName,
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
     });
 
     try {
